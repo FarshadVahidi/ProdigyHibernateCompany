@@ -67,6 +67,12 @@ public class Employee {
 	public void setSuperSsn(int superSsn) {
 		this.superSsn = superSsn;
 	}
+	
+	@Override
+	public String toString() {
+		return "Employee [fname=" + fname + ", mname=" + mname + ", lname=" + lname + ", ssn=" + ssn + ", address="
+				+ address + ", sex=" + sex + ", salary=" + salary + ", superSsn=" + superSsn + "]";
+	}
 		
 	
 	
