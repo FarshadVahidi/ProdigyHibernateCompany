@@ -12,24 +12,19 @@ public class App
 {
     public static void main( String[] args )
     {
-        Employee employee = new Employee();
-        employee.setFname("John");
-        employee.setMname("B");
-        employee.setLname("Smith");
-        employee.setSsn(123456789);
-        employee.setAddress("731 Fondren, Houston, TX");
-        employee.setSex('M');
-        employee.setSalary(30000);
-        employee.setSuperSsn(333445555);
+    	
+        Name name = new Name();
+        name.setFname("Alicia");
+        name.setMname("J");
+        name.setLname("Zelaya");
         
-        Employee employee1 = new Employee();
-        employee1.setFname("Franklin");
-        employee1.setMname("T");
-        employee1.setLname("Wong");
-        employee1.setSsn(333445555);
-        employee1.setAddress("638 Voss, Houston, TX");
-        employee1.setSex('M');
-        employee1.setSalary(40000);
+        Employee e = new Employee();
+        e.setName(name);
+        e.setSsn(999887777);
+        e.setAddress("3321 Castle, Spring, TX");
+        e.setSex('F');
+        e.setSalary(25000);
+        e.setSuperSsn(987654321);
         
         Employee fetch = null;
         
@@ -38,8 +33,7 @@ public class App
         SessionFactory sf = con.buildSessionFactory(reg);
         Session session = sf.openSession();
         Transaction tx = session.beginTransaction();
-        session.save(employee1);
-        session.save(employee);
+        session.save(e);
         fetch = (Employee)session.get(Employee.class, 333445555);
         tx.commit();
         

@@ -5,37 +5,28 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 @Entity
 @Table(name="employee")
 public class Employee {
 	
-	private String fname;
-	private String mname;
-	private String lname;
+	private Name name;
 	@Id
 	private int ssn;
 	private String address;
 	private char sex;
 	private int salary;
-	@Column(name="super_ssn")
+	@Column(name="super_ssn", updatable = true)
 	private int superSsn;
-	public String getFname() {
-		return fname;
+	
+	
+	
+	public Name getName() {
+		return name;
 	}
-	public void setFname(String fname) {
-		this.fname = fname;
-	}
-	public String getMname() {
-		return mname;
-	}
-	public void setMname(String mname) {
-		this.mname = mname;
-	}
-	public String getLname() {
-		return lname;
-	}
-	public void setLname(String lname) {
-		this.lname = lname;
+	public void setName(Name name) {
+		this.name = name;
 	}
 	public int getSsn() {
 		return ssn;
@@ -67,13 +58,13 @@ public class Employee {
 	public void setSuperSsn(int superSsn) {
 		this.superSsn = superSsn;
 	}
-	
 	@Override
 	public String toString() {
-		return "Employee [fname=" + fname + ", mname=" + mname + ", lname=" + lname + ", ssn=" + ssn + ", address="
-				+ address + ", sex=" + sex + ", salary=" + salary + ", superSsn=" + superSsn + "]";
+		return "Employee [name=" + name + ", ssn=" + ssn + ", address=" + address + ", sex=" + sex + ", salary="
+				+ salary + ", superSsn=" + superSsn + "]";
 	}
-		
+	
+	
 	
 	
 
