@@ -3,9 +3,11 @@ package it.prodigy.DemoCompany;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
 @Table(name="employee")
@@ -19,6 +21,10 @@ public class Employee {
 	private int salary;
 	@Column(name="super_ssn", updatable = true)
 	private int superSsn;
+	@ManyToOne
+	@JoinColumn(name="Dno")
+	private Department dep;
+	
 	
 	
 	
@@ -57,6 +63,15 @@ public class Employee {
 	}
 	public void setSuperSsn(int superSsn) {
 		this.superSsn = superSsn;
+	}
+	
+	
+	
+	public Department getDep() {
+		return dep;
+	}
+	public void setDep(Department dep) {
+		this.dep = dep;
 	}
 	@Override
 	public String toString() {
