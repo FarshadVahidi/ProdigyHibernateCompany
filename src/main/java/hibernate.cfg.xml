@@ -10,5 +10,6 @@
         <property name="hibernate.connection.username">farshad</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="nbm2ddl.auto">update</property>
+        <property name="Hibernate.show_sql">true</property>
     </session-factory>
 </hibernate-configuration>
