@@ -15,25 +15,29 @@ public class App
 {
     public static void main( String[] args )
     {        
-        
-        Department fetch = null;
-        Employee fetchE = null;
+        Employee e = null;
         
         Configuration con = new Configuration().configure().addAnnotatedClass(Employee.class).addAnnotatedClass(Department.class);
         ServiceRegistry reg = new ServiceRegistryBuilder().applySettings(con.getProperties()).buildServiceRegistry();
         SessionFactory sf = con.buildSessionFactory(reg);
-        Session session = sf.openSession();
+        Session session1 = sf.openSession();
+        session1.beginTransaction();
+        
+        e = (Employee) session1.get(Employee.class, 333445555);
+        System.out.println(e);
+        
+        session1.getTransaction().commit();
+        session1.close();
+        
+        
+        Session session2 = sf.openSession();
+        session2.beginTransaction();
+        
+        e = (Employee) session2.get(Employee.class, 333445555);
+        System.out.println(e);
+        
+        session2.getTransaction().commit();
+        session2.close();       
        
-        
-        
-        
-        
-        Transaction tx = session.beginTransaction();
-        fetch = (Department)session.get(Department.class, 5);
-        fetchE = (Employee)session.get(Employee.class, 888665555);
-        tx.commit();
-        
-        System.out.println(fetch);
-        System.out.println(fetchE);
     }
 }
