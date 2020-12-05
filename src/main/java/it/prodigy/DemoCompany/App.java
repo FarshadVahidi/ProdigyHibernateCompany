@@ -15,14 +15,14 @@ public class App
     public static void main( String[] args )
     {        
         
-        Department dep = new Department();
-        dep.setDname("research");
-        dep.setDnumber(5);
-        dep.setMgrSsn(333445555);
-        dep.setUtilCalendar(new GregorianCalendar(1988, 5, 22));
+    	Department dep1 = new Department();
+        dep1.setDname("Headquarters");
+        dep1.setDnumber(1);
+        dep1.setMgrSsn(888665555);
+        dep1.setUtilCalendar(new GregorianCalendar(1981, 6, 19));
         
         
-      /*  Name name = new Name();
+        Name name = new Name();
         name.setFname("James");
         name.setMname("E");
         name.setLname("Borg");
@@ -35,23 +35,22 @@ public class App
         e.setSalary(55000);
         e.setDep(dep1);
         
-        Department dep1 = new Department();
-        dep1.setDname("Headquarters");
-        dep1.setDnumber(1);
-        dep1.setMgrSsn(888665555);
-        dep1.setUtilCalendar(new GregorianCalendar(1981, 6, 19));*/
+        
         
         
         
         Department fetch = null;
+        Employee fetchE = null;
         
         Configuration con = new Configuration().configure().addAnnotatedClass(Employee.class).addAnnotatedClass(Department.class);
         ServiceRegistry reg = new ServiceRegistryBuilder().applySettings(con.getProperties()).buildServiceRegistry();
         SessionFactory sf = con.buildSessionFactory(reg);
         Session session = sf.openSession();
         Transaction tx = session.beginTransaction();
-        session.save(dep);
+        session.save(e);
+        session.save(dep1);
         fetch = (Department)session.get(Department.class, 5);
+        fetchE = (Employee)session.get(Employee.class, 888665555);
         tx.commit();
         
         System.out.println(fetch);
