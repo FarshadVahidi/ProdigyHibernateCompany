@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -25,7 +26,7 @@ public class Department {
 	@Column(name="Mgr_start_date")
 	@Temporal(TemporalType.DATE)
 	private  Calendar utilCalendar;
-	@OneToMany(mappedBy="dep")
+	@OneToMany(mappedBy="dep", fetch=FetchType.EAGER)
 	private List<Employee> employees = new ArrayList<Employee>();
 	
 	
