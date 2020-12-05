@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -25,12 +26,18 @@ public class Department {
 	@Column(name="Mgr_start_date")
 	@Temporal(TemporalType.DATE)
 	private  Calendar utilCalendar;
-	@OneToMany(mappedBy="dep")
+	@OneToMany(mappedBy="dep", fetch=FetchType.EAGER)
 	private List<Employee> employees = new ArrayList<Employee>();
 	
 	
 	public String getDname() {
 		return Dname;
+	}
+	public List<Employee> getEmployees() {
+		return employees;
+	}
+	public void setEmployees(List<Employee> employees) {
+		this.employees = employees;
 	}
 	public void setDname(String dname) {
 		Dname = dname;
@@ -56,8 +63,10 @@ public class Department {
 	@Override
 	public String toString() {
 		return "Department [Dname=" + Dname + ", Dnumber=" + Dnumber + ", MgrSsn=" + MgrSsn + ", utilCalendar="
-				+ utilCalendar.getTime() + "]";
+				+ utilCalendar.getTime() + ", employees=" + employees + "]";
 	}
+	
+	
 	
 	
 	
