@@ -33,6 +33,12 @@ public class Department {
 	public String getDname() {
 		return Dname;
 	}
+	public List<Employee> getEmployees() {
+		return employees;
+	}
+	public void setEmployees(List<Employee> employees) {
+		this.employees = employees;
+	}
 	public void setDname(String dname) {
 		Dname = dname;
 	}
@@ -57,8 +63,10 @@ public class Department {
 	@Override
 	public String toString() {
 		return "Department [Dname=" + Dname + ", Dnumber=" + Dnumber + ", MgrSsn=" + MgrSsn + ", utilCalendar="
-				+ utilCalendar.getTime() + "]";
+				+ utilCalendar.getTime() + ", employees=" + employees + "]";
 	}
+	
+	
 	
 	
 	
