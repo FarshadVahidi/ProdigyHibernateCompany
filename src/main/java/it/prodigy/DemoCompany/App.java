@@ -16,8 +16,12 @@ public class App
     public static void main( String[] args )
     {        
         
-        Department fetch = null;
-        Employee fetchE = null;
+        Department dep = new Department();
+        dep.setDnumber(4);
+    	
+        Employee e = new Employee();
+        e.setSsn(999887777);
+        e.setDep(dep);
         
         Configuration con = new Configuration().configure().addAnnotatedClass(Employee.class).addAnnotatedClass(Department.class);
         ServiceRegistry reg = new ServiceRegistryBuilder().applySettings(con.getProperties()).buildServiceRegistry();
@@ -29,11 +33,9 @@ public class App
         
         
         Transaction tx = session.beginTransaction();
-        fetch = (Department)session.get(Department.class, 5);
-        fetchE = (Employee)session.get(Employee.class, 888665555);
+        session.update(e);
         tx.commit();
         
-        System.out.println(fetch);
-        System.out.println(fetchE);
+        
     }
 }
